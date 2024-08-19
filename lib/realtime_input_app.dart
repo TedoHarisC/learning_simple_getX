@@ -23,6 +23,11 @@ class _RealtimeInputAppState extends State<RealtimeInputApp> {
 
   @override
   void dispose() {
+    // To delete value of state (using force even if it's permanent state will be deleted)
+    // the function on dispose deleted state it's for avoid memory leaked
+    //Get.delete<RealtimeInputController>(force: true);
+    // its can be another alternatif for deleted state (and the delete code was on the controller)
+    realtimeInputController.clearState();
     DMethod.printBasic('dispose() - RealtimeInputApp');
     super.dispose();
   }
@@ -61,7 +66,11 @@ class _RealtimeInputAppState extends State<RealtimeInputApp> {
 
 //Controller for GetX state management
 class RealtimeInputController extends GetxController {
-  final _input = 'Input initial'.obs;
+  final _input = ''.obs;
   String get input => _input.value;
   set input(String n) => _input.value = n;
+
+  clearState() {
+    Get.delete<RealtimeInputController>(force: true);
+  }
 }
