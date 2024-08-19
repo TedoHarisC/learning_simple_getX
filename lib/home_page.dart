@@ -1,4 +1,5 @@
 import 'package:course_getx/counter_app.dart';
+import 'package:course_getx/counter_app_setstate.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,7 +27,14 @@ class HomePage extends StatelessWidget {
             child: const Text('Counter App'),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CounterAppSetstate(),
+                ),
+              );
+            },
             child: const Text('Counter App SetState'),
           ),
           ElevatedButton(
